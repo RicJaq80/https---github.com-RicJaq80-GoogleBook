@@ -12,18 +12,25 @@ class TestBook(unittest.TestCase):
 
     def test_search_book(self):
         time.sleep(3)
-        minPrice = self.driver.find_element(By.XPATH, "//input[@jsname='C7zBXb']")
-        minPrice.send_keys("100")
+        locator_minPrice = "//input[@jsname='C7zBXb']"
+        locator_maxPrice = "//input[@jsname='TYdZhc']"
+        locator_go = ".iTnSe"
+        locator_rating = ".yi40Hd"
+        min_price = "100"
+        max_price = "1500"
 
-        maxPrice = self.driver.find_element(By.XPATH, "//input[@jsname='TYdZhc']")
-        maxPrice.send_keys("1500")
+        minPrice = self.driver.find_element(By.XPATH, locator_minPrice)
+        minPrice.send_keys(min_price)
 
-        clickGo = self.driver.find_element(By.CSS_SELECTOR, ".iTnSe")
+        maxPrice = self.driver.find_element(By.XPATH, locator_maxPrice)
+        maxPrice.send_keys(max_price)
+
+        clickGo = self.driver.find_element(By.CSS_SELECTOR, locator_go)
         clickGo.click()
         time.sleep(1)
 
         n = 0
-        stars = self.driver.find_elements(By.CSS_SELECTOR, ".yi40Hd")
+        stars = self.driver.find_elements(By.CSS_SELECTOR, locator_rating)
         for star in stars:
             note_txt = star.text
             if note_txt != '':
