@@ -19,15 +19,20 @@ def ClassSetUp(request):
     driver.implicitly_wait(2)
     driver.get(baseUrl)
 
-    searchBook = driver.find_element(By.NAME, "q")
-    searchBook.send_keys("libro Los Miserables")
+    BOOK_NAME = "Los Miserables"
+    locator_search = "q"
+    locator_click = "btnK"
+    locator_shopping = "//span[normalize-space()='Shopping']"
 
-    clickSearch = driver.find_element(By.NAME, "btnK")
+    searchBook = driver.find_element(By.NAME, locator_search)
+    searchBook.send_keys(f"libro {BOOK_NAME}")
+
+    clickSearch = driver.find_element(By.NAME, locator_click)
     clickSearch.click()
 
-    time.sleep(20) # to click on I am not a robot
+    time.sleep(20) # to solve the captcha
 
-    clickShoping = driver.find_element(By.XPATH, "//span[normalize-space()='Shopping']")
+    clickShoping = driver.find_element(By.XPATH, locator_shopping)
     clickShoping.click()
 
     if request.cls is not None:
