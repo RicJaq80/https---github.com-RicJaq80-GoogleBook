@@ -35,12 +35,13 @@ class TestBook(unittest.TestCase):
             note_txt = star.text
             if note_txt != '':
                 float_note_txt= float(note_txt)
-            n += 1
-            if n == 2:
-                if float_note_txt >= 4.5:
-                    print("Second option has a rating above 4.5 stars")
-                else:
-                    print("Second option doesn't have a rating above 4.5 stars")
-                    resultMessage = "Rating Not Expected"
-                    self.utilities.screenShot(resultMessage)
-                break
+                n += 1
+                print(f"n = {n}, float_note_txt = {float_note_txt}")
+                if n == 2:
+                    if float_note_txt >= 4.5:
+                        print("Second option has a rating above 4.5 stars")
+                    else:
+                        print("Second option doesn't have a rating above 4.5 stars")
+                        resultMessage = "Rating Not Expected"
+                        self.utilities.screenShot(resultMessage)
+                    break
